@@ -1,7 +1,6 @@
 import { Component, OnInit, NgModule, Input, ViewChild } from '@angular/core';
 import { SideNavigationMenuModule, HeaderModule } from '../../shared';
 import { ScreenService } from '../../shared/services';
-import { ItemClickEvent as TreeViewItemClickEvent } from 'devextreme/ui/tree_view';
 import { ItemClickEvent as ToolbarItemClickEvent } from 'devextreme/ui/toolbar';
 import { DxDrawerModule } from 'devextreme-angular/ui/drawer';
 import { DxScrollViewModule, DxScrollViewComponent } from 'devextreme-angular/ui/scroll-view';
@@ -69,7 +68,7 @@ export class SideNavInnerToolbarComponent implements OnInit {
     return !this.menuOpened;
   }
 
-  navigationChanged(event: TreeViewItemClickEvent) {
+  navigationChanged(event: any) {
     const path = event.itemData.path;
     const pointerEvent = event.event;
 
