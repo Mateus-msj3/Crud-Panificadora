@@ -1,0 +1,39 @@
+<div class="content-block">
+
+
+  <div id="selectbox-demo">
+    <div class="widget-container">
+      <div class="dx-fieldset">
+        <div class="dx-field">
+          <div class="dx-field-label">Selecione o Estado</div>
+          <div class="dx-field-value">
+            <dx-select-box
+              [dataSource]="estado"
+              (onValueChanged)="onValueChangedEstado($event)"
+              [displayExpr]="mostraSiglaENome"
+            >
+            </dx-select-box>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget-container">
+      <div class="dx-fieldset">
+        <div class="dx-field">
+          <div class="dx-field-label">Cidade</div>
+          <div class="dx-field-value">
+            <dx-select-box
+              [dataSource]="cidade"
+              (onValueChanged)="onValueChangedCidade($event)"
+              displayExpr="nome"
+            ></dx-select-box>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

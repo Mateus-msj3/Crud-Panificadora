@@ -1,0 +1,43 @@
+<div class="content-block">
+  <h2>Produtos</h2>
+</div>
+
+<div id="data-grid-demo">
+
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="produtos"
+    (onRowInserting)="onInsertingProduto($event)"
+    (onRowUpdating)="onUpdatingProduto($event)"
+    (onRowRemoving)="onRemoveProduto($event)"
+    [showBorders]="true "
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-popup
+        title="Dados do Produto"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="id" [disabled]="true"></dxi-item>
+          <dxi-item dataField="codigo"></dxi-item>
+          <dxi-item dataField="descricao"></dxi-item>
+          <dxi-item dataField="valorUnitario"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="codigo"></dxi-column>
+    <dxi-column dataField="descricao"> </dxi-column>
+    <dxi-column dataField="valorUnitario" [format] = "{style: 'currency', currency: 'BRL', useGrouping: true, minimumFractionDigits: 2}"> </dxi-column>
+  </dx-data-grid>
+</div>

@@ -1,0 +1,190 @@
+<h2 class="content-block">Clientes</h2>
+
+<div id="data-grid-demo">
+  <dx-load-panel [position]="loadPanelPosition" [visible]="isLoading">
+  </dx-load-panel>
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="clientes"
+    (onSaving)="onSaving($event)"
+    [showBorders]="true"
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-popup
+        title="Dados do Cliente"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+          <dxi-item dataField="id" [disabled]="true"></dxi-item>
+          <dxi-item dataField="codigo"></dxi-item>
+          <dxi-item dataField="nome"></dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="codigo"></dxi-column>
+    <dxi-column dataField="nome"> </dxi-column>
+  </dx-data-grid>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<dx-data-grid-->
+
+<!--  [remoteOperations]="true"-->
+<!--  [height]="600"-->
+<!--  [showBorders]="true"-->
+<!--&gt;-->
+<!--  <dxo-filter-row [visible]="true"></dxo-filter-row>-->
+<!--  <dxo-header-filter [visible]="true"></dxo-header-filter>-->
+<!--  <dxo-group-panel [visible]="true"></dxo-group-panel>-->
+<!--  <dxo-scrolling mode="virtual"></dxo-scrolling>-->
+<!--  <dxo-editing-->
+<!--    mode="row"-->
+<!--    [allowAdding]="true"-->
+<!--    [allowUpdating]="true"-->
+<!--    [allowDeleting]="true"-->
+<!--  >-->
+<!--  </dxo-editing>-->
+<!--  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>-->
+<!--  <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>-->
+<!--  <dxi-column dataField="CustomerID" caption="Customer">-->
+<!--    <dxi-validation-rule-->
+<!--      type="stringLength"-->
+<!--      [max]="5"-->
+<!--      message="The field Customer must be a string with a maximum length of 5."-->
+<!--    ></dxi-validation-rule>-->
+<!--    <dxo-lookup-->
+
+<!--      valueExpr="Value"-->
+<!--      displayExpr="Text"-->
+<!--    ></dxo-lookup>-->
+<!--  </dxi-column>-->
+<!--  <dxi-column dataField="OrderDate" dataType="date">-->
+<!--    <dxi-validation-rule-->
+<!--      type="required"-->
+<!--      message="The OrderDate field is required."-->
+<!--    ></dxi-validation-rule>-->
+<!--  </dxi-column>-->
+<!--  <dxi-column dataField="Freight">-->
+<!--    <dxo-header-filter groupInterval="100"></dxo-header-filter>-->
+<!--    <dxi-validation-rule-->
+<!--      type="range"-->
+<!--      [min]="0"-->
+<!--      [max]="2000"-->
+<!--      message="The field Freight must be between 0 and 2000."-->
+<!--    >-->
+<!--    </dxi-validation-rule>-->
+<!--  </dxi-column>-->
+<!--  <dxi-column dataField="ShipCountry">-->
+<!--  </dxi-column>-->
+<!--  <dxi-column dataField="ShipVia" caption="Shipping Company" dataType="number">-->
+<!--    <dxo-lookup-->
+
+<!--      valueExpr="Value"-->
+<!--      displayExpr="Text"-->
+<!--    ></dxo-lookup>-->
+<!--  </dxi-column>-->
+
+<!--  <div *dxTemplate="let order of 'detail'">-->
+
+<!--  </div>-->
+<!--  <dxo-summary>-->
+<!--    <dxi-total-item column="Freight" summaryType="sum">-->
+<!--      <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>-->
+<!--    </dxi-total-item>-->
+<!--    <dxi-group-item column="Freight" summaryType="sum">-->
+<!--      <dxo-value-format type="decimal" [precision]="2"></dxo-value-format>-->
+<!--    </dxi-group-item>-->
+<!--    <dxi-group-item summaryType="count"> </dxi-group-item>-->
+<!--  </dxo-summary>-->
+<!--</dx-data-grid>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

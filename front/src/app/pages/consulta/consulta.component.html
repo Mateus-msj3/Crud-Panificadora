@@ -1,0 +1,10 @@
+<div class="content-block">
+  <h2>Consulta de Estado e suas Cidades</h2>
+</div>
+
+<app-cidade-estado
+  [(nomeEstado)]="estadoSelecionado"
+  (nomeCidade)="onNomeCidade($event)"
+></app-cidade-estado>
+
+Estado: {{ estadoSelecionado }} / Cidade: {{ cidadeSelecionada }}

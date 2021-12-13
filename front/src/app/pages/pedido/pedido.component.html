@@ -1,0 +1,87 @@
+<h2 class="content-block">Pedidos</h2>
+
+<div id="data-grid-demo">
+  <dx-data-grid
+    id="gridContainer"
+    [dataSource]="pedidos"
+    [showBorders]="true"
+    (onInitNewRow)="onInitNewRowItemPedido($event)"
+    (onSaving)="onSavingPedido($event)"
+  >
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-popup
+        title="Dados do Pedido"
+        [showTitle]="true"
+        [width]="1080"
+        [height]="525"
+      >
+      </dxo-popup>
+      <dxo-form>
+        <dxi-item itemType="group" [colCount]="3" [colSpan]="2">
+          <dxi-item dataField="id" [disabled]="true"></dxi-item>
+          <dxi-item dataField="numero"></dxi-item>
+          <dxi-item dataField="cliente"></dxi-item>
+          <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+            <dxi-item dataField="itens" [colSpan]="2"></dxi-item>
+          </dxi-item>
+        </dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="id"></dxi-column>
+    <dxi-column dataField="numero"></dxi-column>
+    <dxi-column dataField="dataPedido" dataType="Date"> </dxi-column>
+    <dxi-column dataField="cliente" editCellTemplate="clienteEditCellTemplate" cellTemplate="clienteCellTemplate"> </dxi-column>
+    <dxi-column dataField="valorTotal" [format] = "{style: 'currency', currency: 'BRL', useGrouping: true, minimumFractionDigits: 2}"> </dxi-column>
+    <dxi-column dataField="itens" [visible]="false" editCellTemplate="itensEditCellTemplate"></dxi-column>
+
+    <div *dxTemplate="let data of 'clienteCellTemplate'">{{data.value ? data.value.nome : 'não achou cliente'}}</div>
+
+    <div *dxTemplate="let data of 'clienteEditCellTemplate'">
+      <!--      {{data|firstKeysToConsole}}-->
+      <dx-select-box [items]="clientes"
+                     valueExpr="id"
+                     [value]="data.value ? data.value.id : 0"
+                     [displayExpr]="mostraCodigoENomeCliente"
+                     (valueChange)="clienteValueChange($event, data)"
+      ></dx-select-box>
+    </div>
+
+    <div *dxTemplate="let data of 'itensEditCellTemplate'">
+      <dx-data-grid #gridItem
+                    [dataSource]="data.value"
+                    (onSaving)="onSavingItensNoGrid($event, data)"
+      >
+        <dxo-editing
+          mode="row"
+          [allowAdding]="true"
+          [allowUpdating]="true"
+          [allowDeleting]="true"
+          [useIcons]="true">
+        </dxo-editing>
+        <dxi-column dataField="produto" editCellTemplate="produtoEditCellTemplate" caption="Produto" cellTemplate="produtoCellTemplate"> </dxi-column>
+        <dxi-column dataField="quantidade"> </dxi-column>
+        <dxi-column dataField="valorTotalItens" [allowEditing]="false" [format] = "{style: 'currency', currency: 'BRL', useGrouping: true, minimumFractionDigits: 2}"> </dxi-column>
+
+        <div *dxTemplate="let data of 'produtoCellTemplate'">{{data.value ? data.value.descricao : 'não achou Produto'}}</div>
+
+        <div *dxTemplate="let data of 'produtoEditCellTemplate'">
+          <dx-select-box [items]="produtos"
+                         valueExpr="id"
+                         [value]="data.value ? data.value.id : 0"
+                         (valueChange)="produtoValueChange($event, data)"
+                         [displayExpr]="mostraCodigoENomeProduto"
+          ></dx-select-box>
+        </div>
+
+      </dx-data-grid>
+    </div>
+
+  </dx-data-grid>
+</div>
